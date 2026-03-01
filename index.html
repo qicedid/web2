@@ -20,6 +20,7 @@
             background-position: center;
             color: white;
             font-size: 18px;
+            transition: background-image 0.3s ease;
         }
 
         .thumbnail {
@@ -65,13 +66,18 @@
             console.log("Alt text:", previewPic.alt); 
             console.log("Src:", previewPic.src);
 
-            document.getElementById("image").innerHTML = previewPic.alt;
-            document.getElementById("image").style.backgroundImage = `url('${previewPic.src}')`;
+           
+            const imageDiv = document.getElementById("image");
+            imageDiv.textContent = previewPic.alt;
+
+            
+            imageDiv.style.backgroundImage = "url('" + previewPic.src + "')";
         }
 
         function undo() {
-            document.getElementById("image").innerHTML = "Hover over an image below to display here.";
-            document.getElementById("image").style.backgroundImage = "url('')";
+            const imageDiv = document.getElementById("image");
+            imageDiv.textContent = "Hover over an image below to display here.";
+            imageDiv.style.backgroundImage = "url('')";
         }
     </script>
 
