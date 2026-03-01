@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Preview Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #image {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            line-height: 300px;
+            border: 2px solid #333;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 75px;
+            margin: 10px;
+            cursor: pointer;
+            border: 1px solid #333;
+        }
+
+        .thumbnail:hover {
+            border: 2px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hover Image Preview</h1>
+
+    <div id="image">Hover over an image below to display here.</div>
+
+    <img src="https://via.placeholder.com/400x300/ff7f7f/333333?text=Image+1" 
+         alt="Red Placeholder Image" 
+         class="thumbnail" 
+         onmouseover="upDate(this)" 
+         onmouseout="undo()">
+
+    <img src="https://via.placeholder.com/400x300/7fff7f/333333?text=Image+2" 
+         alt="Green Placeholder Image" 
+         class="thumbnail" 
+         onmouseover="upDate(this)" 
+         onmouseout="undo()">
+
+    <img src="https://via.placeholder.com/400x300/7f7fff/333333?text=Image+3" 
+         alt="Blue Placeholder Image" 
+         class="thumbnail" 
+         onmouseover="upDate(this)" 
+         onmouseout="undo()">
+
+    <script>
+        function upDate(previewPic) {
+            console.log("Event triggered");
+            console.log("Alt text:", previewPic.alt); 
+            console.log("Src:", previewPic.src);
+
+            document.getElementById("image").innerHTML = previewPic.alt;
+            document.getElementById("image").style.backgroundImage = `url('${previewPic.src}')`;
+        }
+
+        function undo() {
+            document.getElementById("image").innerHTML = "Hover over an image below to display here.";
+            document.getElementById("image").style.backgroundImage = "url('')";
+        }
+    </script>
+
+</body>
+</html>
